@@ -1,0 +1,30 @@
+<div *ngIf="formLoaded; else loading" class="container mt-4">
+    <h3 class="mb-4 text-center">{{ formDefinition.formName }}</h3>
+
+    <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        <div *ngFor="let field of formDefinition.fields" class="mb-3">
+            <label [for]="field.name" class="form-label fw-bold">{{ field.name }}</label>
+            <input [type]="field.type === 'number' ? 'number' : 'text'" [id]="field.name" [formControlName]="field.name"
+                class="form-control" [readonly]="formDefinition.isSubmitted"
+                [ngClass]="{ 'is-invalid': dynamicForm.get(field.name)?.invalid && dynamicForm.get(field.name)?.touched }" />
+
+            <div *ngIf="dynamicForm.get(field.name)?.invalid && dynamicForm.get(field.name)?.touched"
+                class="invalid-feedback">
+                {{ field.name }} geçerli değil!
+            </div>
+        </div>
+
+        <button *ngIf="!formDefinition.isSubmitted" type="submit" class="btn btn-primary w-100 mt-3">
+            Gönder
+        </button>
+    </form>
+</div>
+
+<ng-template #loading>
+    <div class="text-center mt-4">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Yükleniyor...</span>
+        </div>
+        <p>Form yükleniyor...</p>
+    </div>
+</ng-template>
