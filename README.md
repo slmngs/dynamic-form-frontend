@@ -1,27 +1,78 @@
-# DynamicFormFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+# Dynamic Form Builder Frontend
 
-## Development server
+Bu proje **Angular 15** ve **Bootstrap** kullanılarak geliştirilmiş bir dinamik form builder uygulamasıdır.  
+Backend’te tanımlanan form JSON’una göre dinamik olarak form oluşturur ve **validasyonları** Angular tarafında da uygular.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🚀 Kurulum ve Çalıştırma
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+✅ **Gerekli Sürümler:**  
+- **Node.js:** 20.x  
+- **NPM:** 10.x  
+- **Angular CLI:** 15.x
 
-## Build
+✅ **Adımlar:**  
+1. Proje dizinine gir:
+   ```bash
+   cd dynamic-form-frontend
+   ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. Gerekli paketleri yükle:
+   ```bash
+   npm install
+   ```
 
-## Running unit tests
+3. Angular uygulamasını başlat:
+   ```bash
+   ng serve
+   ```
+   ve tarayıcıda `http://localhost:4200` adresinden eriş.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🟡 Kullandığımız Teknolojiler
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+✅ **Angular 15** – Modern, bileşen tabanlı frontend framework.  
+✅ **Bootstrap 5** – Şık ve responsive tasarım için CSS framework.  
+✅ **Reactive Forms** – Dinamik form yapısı ve validasyon.  
+✅ **SweetAlert2** – Başarılı ve hatalı durum bildirimleri için güzel popup’lar.
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 🌟 Özellikler
+
+- **Backend’ten form tanımını alır** (GET /api/forms/{formName})  
+- **Angular Reactive Forms** ile alanları dinamik oluşturur  
+- **Alan bazlı validasyon**: MinLength, MaxLength, Regex, MinValue, MaxValue gibi kuralları otomatik uygular  
+- **Formu submit eder** (POST /api/forms/{formName}/submit)  
+- **Doldurulmuş formlar readonly gelir, sadece görüntülenebilir**  
+- **Liste ekranı**: Doldurulmuş ve doldurulmamış formları ayırt eder, her 5 saniyede bir otomatik günceller.
+
+---
+
+## 🔧 Dikkat Edilecekler
+
+👉 **form.service.ts** dosyasındaki `apiUrl` değişkeni default olarak `http://localhost:5185/api/forms`’e ayarlanmıştır.  
+👉 Backend API başka bir portta çalışıyorsa bu değeri güncellemeyi unutmayın!  
+```typescript
+private apiUrl = 'http://localhost:5185/api/forms';
+```
+Backend URL’sini projeye uygun şekilde ayarlayın.
+
+---
+
+## 🌐 Backend API
+Bu frontend uygulaması **.NET Core tabanlı backend API** ile çalışır:  
+👉 [dynamic-form-backend (GitHub)](https://github.com/slmngs/dynamic-form-backend/)
+
+---
+
+## 📝 Lisans
+Bu proje MIT Lisansı ile lisanslanmıştır.
+
+---
+
+### 🎯 Sonuç
+✅ Artık **tamamen dinamik, özelleştirilebilir ve şık** bir form builder frontend’imiz var! 🚀✨
